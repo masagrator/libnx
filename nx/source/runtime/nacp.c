@@ -60,7 +60,7 @@ Result nacpGetLanguageEntry(NacpStruct* nacp, NacpLanguageEntry** langentry) {
     if (R_FAILED(rc))
         return rc;
 
-    entry = &nacp->lang[g_nacpLanguageTable[Language]];
+    entry = &nacp->lang_data.lang[g_nacpLanguageTable[Language]];
 
     if (entry->name[0]==0 && entry->author[0]==0) {
         for(i=0; i<16; i++) {
@@ -76,4 +76,3 @@ Result nacpGetLanguageEntry(NacpStruct* nacp, NacpLanguageEntry** langentry) {
 
     return rc;
 }
-
