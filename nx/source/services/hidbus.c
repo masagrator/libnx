@@ -149,7 +149,7 @@ static Result _hidbusSharedmemInitialize(Service* srv) {
     if ((g_hidbusSharedmemRefCount++) == 0) {
         rc = _hidbusCmdGetHandle(srv, &sharedmem_handle, 10); // GetSharedMemoryHandle
         if (R_SUCCEEDED(rc)) {
-            shmemLoadRemote(&g_hidbusSharedmem, sharedmem_handle, 0x1000, Perm_R);
+            shmemLoadRemote(&g_hidbusSharedmem, sharedmem_handle, 0x40000, Perm_R);
             rc = shmemMap(&g_hidbusSharedmem);
             if (R_FAILED(rc)) shmemClose(&g_hidbusSharedmem);
         }
