@@ -170,7 +170,7 @@ typedef struct {
     NifmIpSettingData ip_setting_data;                   ///< \ref NifmIpSettingData
 } NifmNetworkProfileData;
 
-/// NetworkProfile
+/// SfNetworkProfileBasicInfo. Converted from/to \ref NifmNetworkProfileBasicInfo.
 typedef struct {
     Uuid uuid;                                           ///< Uuid
     char network_name[0x40];                             ///< NUL-terminated Network Name string.
@@ -180,6 +180,19 @@ typedef struct {
     char ssid[0x20];                                     ///< SSID string.
     u8 authentication;                                   ///< \ref NifmAuthentication
     u8 encryption;                                       ///< \ref NifmEncryption
+} NifmSfNetworkProfileBasicInfo;
+
+/// NetworkProfileBasicInfo. Converted from/to \ref NifmSfNetworkProfileBasicInfo.
+typedef struct {
+    Uuid uuid;                                           ///< Uuid
+    char network_name[0x40];                             ///< NUL-terminated Network Name string.
+    u32 profile_type;                                    ///< \ref NifmNetworkProfileType
+    u32 connection_type;                                 ///< \ref NifmInternetConnectionType
+    u32 ssid_len;                                        ///< SSID length.
+    char ssid[0x20];                                     ///< SSID string.
+    u8 pad[3];                                           ///< Padding
+    u32 authentication;                                  ///< \ref NifmAuthentication
+    u32 encryption;                                      ///< \ref NifmEncryption
 } NifmNetworkProfileBasicInfo;
 
 /// Initialize nifm. This is used automatically by gethostid().
