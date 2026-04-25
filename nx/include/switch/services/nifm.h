@@ -38,23 +38,26 @@ typedef enum {
     NifmRequestState_Unknown5                           = 5, ///< Unknown
 } NifmRequestState;
 
+/// Authentication
 typedef enum {
-    NifmWirelessSecurityType_Invalid                    = 0, ///< Invalid
-    NifmWirelessSecurityType_Open                       = 1, ///< Open
-    NifmWirelessSecurityType_Shared                     = 2, ///< Shared
-    NifmWirelessSecurityType_Unk3                       = 3, ///< Unknown
-    NifmWirelessSecurityType_Wpa                        = 4, ///< WPA
-    NifmWirelessSecurityType_Unk5                       = 5, ///< Unknown
-    NifmWirelessSecurityType_Wpa2                       = 6, ///< WPA2
-} NifmWirelessSecurityType;
+    NifmAuthentication_Invalid                          = 0, ///< Invalid
+    NifmAuthentication_Open                             = 1, ///< Open
+    NifmAuthentication_Shared                           = 2, ///< Shared
+    NifmAuthentication_Wpa                              = 3, ///< WPA
+    NifmAuthentication_WpaPsk                           = 4, ///< WPA-PSK
+    NifmAuthentication_Wpa2                             = 5, ///< WPA2
+    NifmAuthentication_Wpa2Psk                          = 6, ///< WPA2-PSK
+    NifmAuthentication_Unk7                             = 7, ///< Unknown
+} NifmAuthentication;
 
+/// Encryption
 typedef enum {
-    NifmWirelessSecurityStandard_Invalid                = 0, ///< Invalid
-    NifmWirelessSecurityStandard_None                   = 1, ///< No password
-    NifmWirelessSecurityStandard_Wep                    = 2, ///< WEP 
-    NifmWirelessSecurityStandard_Unk3                   = 3, ///< Unknown
-    NifmWirelessSecurityStandard_Wpa                    = 4, ///< WPA/WPA2
-} NifmWirelessSecurityStandard;
+    NifmEncryption_Invalid                              = 0, ///< Invalid
+    NifmEncryption_None                                 = 1, ///< No password
+    NifmEncryption_Wep                                  = 2, ///< WEP 
+    NifmEncryption_Tkip                                 = 3, ///< TKIP
+    NifmEncryption_Aes                                  = 4, ///< AES
+} NifmEncryption;
 
 typedef enum {
     NifmNetworkProfileGroup_User                        = BIT(0), ///< Saved by user
@@ -171,12 +174,12 @@ typedef struct {
 typedef struct {
     Uuid uuid;                                           ///< Uuid
     char network_name[0x40];                             ///< NUL-terminated Network Name string.
-    u8 unk_x50;                                          ///< Unknown
+    u8 unk_x50;                                          ///< \ref Unknown
     u8 connection_type;                                  ///< \ref NifmInternetConnectionType
     u8 ssid_len;                                         ///< SSID length.
     char ssid[0x20];                                     ///< SSID string.
-    u8 security_type;                                    ///< \ref NifmWirelessSecurityType
-    u8 security_standard;                                ///< \ref NifmWirelessSecurityStandard
+    u8 authentication;                                   ///< \ref NifmAuthentication
+    u8 encryption;                                       ///< \ref NifmEncryption
 } NifmNetworkProfileBasicInfo;
 
 /// Initialize nifm. This is used automatically by gethostid().
