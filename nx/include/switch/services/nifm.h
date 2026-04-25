@@ -214,14 +214,14 @@ Result nifmGetCurrentNetworkProfile(NifmNetworkProfileData *profile);
 
 /**
  * @brief Returns saved network profiles
- * @note NifmServiceType User and System have access only to NifmNetworkProfileGroup_User
- * @param[in] group \ref NifmNetworkProfileGroup
+ * @note NifmServiceType User and System have access only to NifmNetworkProfileType_User
+ * @param[in] type \ref NifmNetworkProfileType
  * @param[out] buffer \ref NifmNetworkProfileBasicInfo
  * @param[in] max_entries How many \ref NifmNetworkProfileBasicInfo can fit into buffer
  * @param[out] total_entries How many \ref NifmNetworkProfileBasicInfo is available
  */
 
-Result nifmEnumerateNetworkProfiles(NifmNetworkProfileType group, NifmNetworkProfileBasicInfo* buffer, size_t max_entries, u32* total_entries);
+Result nifmEnumerateNetworkProfiles(NifmNetworkProfileType type, NifmNetworkProfileBasicInfo* buffer, size_t max_entries, u32* total_entries);
 
 /**
  * @brief GetNetworkProfile
