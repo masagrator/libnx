@@ -174,7 +174,7 @@ typedef struct {
 typedef struct {
     Uuid uuid;                                           ///< Uuid
     char network_name[0x40];                             ///< NUL-terminated Network Name string.
-    u8 unk_x50;                                          ///< \ref Unknown
+    u8 unk_x50;                                          ///< Unknown
     u8 connection_type;                                  ///< \ref NifmInternetConnectionType
     u8 ssid_len;                                         ///< SSID length.
     char ssid[0x20];                                     ///< SSID string.
