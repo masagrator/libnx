@@ -60,10 +60,10 @@ typedef enum {
 } NifmEncryption;
 
 typedef enum {
-    NifmNetworkProfileGroup_User                        = BIT(0), ///< Saved by user
-    NifmNetworkProfileGroup_Nintendo                    = BIT(1), ///< Hardcoded list of Nintendo hotspots
-    NifmNetworkProfileGroup_Unknown                     = BIT(2), ///< Unknown
-} NifmNetworkProfileGroup;
+    NifmNetworkProfileType_User                        = BIT(0), ///< Saved by user
+    NifmNetworkProfileType_SsidList                    = BIT(1), ///< Hardcoded list of Nintendo hotspots
+    NifmNetworkProfileType_Temporary                   = BIT(2), ///< Temporary
+} NifmNetworkProfileType;
 
 /// Request
 typedef struct {
@@ -174,7 +174,7 @@ typedef struct {
 typedef struct {
     Uuid uuid;                                           ///< Uuid
     char network_name[0x40];                             ///< NUL-terminated Network Name string.
-    u8 unk_x50;                                          ///< Unknown
+    u8 profile_type;                                     ///< \ref NifmNetworkProfileType
     u8 connection_type;                                  ///< \ref NifmInternetConnectionType
     u8 ssid_len;                                         ///< SSID length.
     char ssid[0x20];                                     ///< SSID string.
