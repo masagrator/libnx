@@ -221,7 +221,7 @@ Result nifmGetCurrentNetworkProfile(NifmNetworkProfileData *profile);
  * @param[out] total_entries How many \ref NifmNetworkProfileBasicInfo is available
  */
 
-Result nifmEnumerateNetworkProfiles(NifmNetworkProfileGroup group, NifmNetworkProfileBasicInfo* buffer, size_t max_entries, u32* total_entries);
+Result nifmEnumerateNetworkProfiles(NifmNetworkProfileType group, NifmNetworkProfileBasicInfo* buffer, size_t max_entries, u32* total_entries);
 
 /**
  * @brief GetNetworkProfile
