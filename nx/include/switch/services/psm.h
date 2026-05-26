@@ -58,7 +58,7 @@ typedef struct {
     u8 reserved;
 } PsmBatteryChargeInfoFieldsOld;
 
-/// BatteryChargeInfoFields [17.0.0+]
+/// BatteryChargeInfoFieldsOldV17 [17.0.0-20.5.0]
 typedef struct {
     u32 input_current_limit;          ///< Input (Sink) current limit in mA
     u32 boost_mode_current_limit;     ///< Output (Source/VBUS/OTG) current limit in mA
@@ -82,6 +82,33 @@ typedef struct {
     bool otg_request;
     u8 reserved;
     u8 unk_x40[0x14];
+} PsmBatteryChargeInfoFieldsOldV17;
+
+/// BatteryChargeInfoFields [21.0.0+]
+typedef struct {
+    u32 input_current_limit;          ///< Input (Sink) current limit in mA
+    u32 boost_mode_current_limit;     ///< Output (Source/VBUS/OTG) current limit in mA
+    u32 fast_charge_current_limit;    ///< Battery charging current limit in mA
+    u32 charge_voltage_limit;         ///< Battery charging voltage limit in mV
+    PsmChargerType charger_type;
+    u8 hi_z_mode;
+    bool battery_charging;
+    u8 pad[2];
+    PsmVdd50State vdd50_state;        ///< Power Delivery Controller State
+    u32 temperature_celcius;          ///< Battery temperature in milli C
+    u32 battery_charge_percentage;    ///< Raw battery charged capacity per cent-mille
+    u32 battery_charge_milli_voltage; ///< Voltage average in mV
+    u32 battery_age_percentage;       ///< Battery age per cent-mille
+    u32 unk_x2c;                      ///< The same value as charger_input_voltage_limit
+    u32 usb_power_role;
+    u32 usb_charger_type;
+    u32 charger_input_voltage_limit;  ///< Charger and external device voltage limit in mV
+    u32 charger_input_current_limit;  ///< Charger and external device current limit in mA
+    bool fast_battery_charging;
+    bool controller_power_supply;
+    bool otg_request;
+    u8 reserved;
+    u8 unk_x44[0x10];
 } PsmBatteryChargeInfoFields;
 
 /// IPsmSession
